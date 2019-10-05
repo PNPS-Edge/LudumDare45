@@ -12,6 +12,18 @@ public class BulletScript : MonoBehaviour
         Destroy(gameObject);
     }*/
 
+    private void Update()
+    {
+        
+        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+        Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+        if ((transform.position.x < min.x) || (transform.position.x > max.x) ||
+                (transform.position.y < min.y) || (transform.position.y > max.y))
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Bullet") )
@@ -20,12 +32,12 @@ public class BulletScript : MonoBehaviour
         }
         if (collision.CompareTag("EnemyCac"))
         {
-            collision.GetComponent<EnemyControlCac>().SetHealth(10);
+            collision.GetComponent<EnemyControlCac>().SetHealth(50);
             Destroy(gameObject);
         }
         if (collision.CompareTag("EnemyDistance"))
         {
-            collision.GetComponent<EnemyControlDistance>().SetHealth(10);
+            collision.GetComponent<EnemyControlDistance>().SetHealth(50);
             Destroy(gameObject);
         }
     }

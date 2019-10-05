@@ -30,6 +30,7 @@ public class EnemyControlDistance : MonoBehaviour
         health = health - nb;
         if (health <= 0)
         {
+            target.GetComponent<PlayerMovement>().SetScore(20);
             Destroy(gameObject);
         }
     }

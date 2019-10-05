@@ -9,10 +9,14 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     Vector2 movement;
     Vector2 mousePos;
+    private int compteurVie = 1;
+    public int score = 0;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         
     }
 
@@ -31,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        
+        
 
     }
 
@@ -38,8 +44,59 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.CompareTag("Bullet") || collision.CompareTag("EnemyCac") || collision.CompareTag("EnemyDistance"))
         {
+            compteurVie -= 1;
+            ChangeAnimation();
+            if(compteurVie <=0)
+            { 
             Destroy(gameObject);
+            }
         }
         
     }
+
+    public void SetScore(int nb)
+    {
+        score += nb;
+        if (score >= 50 && score <= 100)
+        {
+            compteurVie += 1;
+            ChangeAnimation();
+        }
+        if (score == 100)
+        {
+            compteurVie += 1;
+        }
+        if (score == 150)
+        {
+            compteurVie += 1;
+        }
+    }
+
+    public void ChangeAnimation()
+    {
+        switch(compteurVie)
+        {
+            case 1:
+                {
+                    //animation spermatozoide
+                    animator.SetInteger("Vie", 2);
+                    Debug.Log(compteurVie + "ICCCI ");
+                    break;
+                }
+            case 2:
+                {
+                    //animation coeur
+                    animator.SetInteger("Vie", 3);
+                    Debug.Log(compteurVie + "LLLAAA ");
+                    break;
+                }
+            /*case 3:
+                {
+                    //animation foetus
+                    break;
+                }*/
+        }
+       
+    }
+
 }
