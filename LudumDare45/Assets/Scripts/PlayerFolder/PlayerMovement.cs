@@ -60,8 +60,8 @@ public class PlayerMovement : MonoBehaviour
         compteurVie = compteurVie - 1;
         if (compteurVie <= 0)
         {
-            //SceneManager.LoadScene("YouLoose");
-            //Destroy(gameObject);
+            SceneManager.LoadScene("YouLoose");
+            
         }
         ChangeAnimation();
     }
@@ -83,12 +83,12 @@ public class PlayerMovement : MonoBehaviour
         if (score == 300)
         {
             compteurVie += 1;
+            ChangeAnimation();
         }
-        if (score == 400 || score == 500 && compteurVie<4)
+        if(score == 500)
         {
-            compteurVie += 1;
+            SceneManager.LoadScene("YouWin");
         }
-
     }
 
     public void ChangeAnimation()
@@ -110,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
             case 3:
                 {
                     //animation coeur
-                    animator.enabled = true;
+                    //animator.enabled = true;
                     animator.SetInteger("Vie", 3);
                     break;
                 }
@@ -118,7 +118,8 @@ public class PlayerMovement : MonoBehaviour
                 {
                     //animation foetus
                     animator.SetInteger("Vie", 4);
-                    animator.enabled = false;
+                    //animator.enabled = false;
+
                     break;
                 }
         }

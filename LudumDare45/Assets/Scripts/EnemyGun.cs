@@ -8,17 +8,18 @@ public class EnemyGun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("FireEnemyBullet", 1f);
+        float rend = Random.Range(1F, 3F);
+        InvokeRepeating("FireEnemyBullet", 1, rend);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     /// <summary>
-    /// L'ennemis tirera en direction de la position du joueur 
+    /// L'ennemi tirera en direction de la position du joueur 
     /// </summary>
     void FireEnemyBullet()
     {

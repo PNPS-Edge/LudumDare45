@@ -24,8 +24,7 @@ public class EnemyControlDistance : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //CheckDistance();
-        
+        //Time before move again
         timeLeft -= Time.deltaTime;
         if(timeLeft <=0)
         {
@@ -41,7 +40,10 @@ public class EnemyControlDistance : MonoBehaviour
     }
 
 
-    //Vie de l'ennemie
+   /// <summary>
+   /// Setter Enemy life
+   /// </summary>
+   /// <param name="nb"></param>
     public void SetHealth(int nb)
     {
         health = health - nb;

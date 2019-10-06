@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
+    /// <summary>
+    /// point de tire
+    /// </summary>
     public Transform firePoint;
     public Transform firePointTwo;
     public Transform firePointThree;
     public Transform firePointFour;
+    /// <summary>
+    /// tire de l'ambryon, pour l'avoir au milieu
+    /// </summary>
     public Transform firePointCell;
     public GameObject bullet;
-    public int attackPlayer = 20;
     public float bulletForce = 5f;
 
     // Update is called once per frame
