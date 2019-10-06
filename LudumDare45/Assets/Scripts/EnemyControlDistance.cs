@@ -52,9 +52,7 @@ public class EnemyControlDistance : MonoBehaviour
         if (Vector2.Distance(target.position, transform.position) <= chaseRadius )
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime - chaseRadius);
-
         }
-        
     }
 }
 

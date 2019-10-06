@@ -32,8 +32,6 @@ public class TitleMenuController : MonoBehaviour
             exitrequired = true;
         }
 
-        Debug.Log(string.Format("Normalized Time {0}, Is In Transition : {1}, Exit Required {2}", animator.GetCurrentAnimatorStateInfo(0).normalizedTime, !animator.IsInTransition(0), exitrequired));
-
         if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 2 && !animator.IsInTransition(0) && exitrequired)
         {
             StartCoroutine(StartGame());
