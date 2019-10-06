@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
             if (timeEvolve <= 0)
             {
                 compteurVie += 1;
-                timeEvolve = 30;
+                timeEvolve = 60;
                 ChangeAnimation();
             }
         }
@@ -118,7 +118,6 @@ public class PlayerMovement : MonoBehaviour
                 {
                     //animation foetus
                     animator.SetInteger("Vie", 4);
-                    //animator.enabled = false;
 
                     break;
                 }

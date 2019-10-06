@@ -26,7 +26,9 @@ public class PlayerShooting : MonoBehaviour
             Shoot();
         }
     }
-
+    /// <summary>
+    /// En fonction de la vie du joueur les points de tir sont différents
+    /// </summary>
     void Shoot()
     {
         int playerLife = gameObject.GetComponent<PlayerMovement>().compteurVie;
@@ -34,8 +36,7 @@ public class PlayerShooting : MonoBehaviour
         {
             case 1:
                 {
-                    //Do nothing
-                    
+                    //Do nothing Player Spermaplayer
                     break;
                 }
             case 2: //Player embryon
@@ -57,7 +58,6 @@ public class PlayerShooting : MonoBehaviour
                 }
             default:
                 {
-                    
                     break;
                 }
         }
@@ -72,7 +72,6 @@ public class PlayerShooting : MonoBehaviour
    
     void ShooterTwo()
     {
-        
         GameObject bullets = Instantiate(bullet, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullets.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
