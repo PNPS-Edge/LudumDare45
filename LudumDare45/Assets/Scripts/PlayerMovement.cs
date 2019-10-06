@@ -31,7 +31,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("movement : " + movement.x);
         movement.x = Input.GetAxisRaw("Horizontal");
+        Debug.Log("movement 2  : " + movement.x);
         movement.y = Input.GetAxisRaw("Vertical");
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -65,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         if (score == 100)
         {
             compteurVie += 1;
+            ChangeAnimation();
         }
         if (score == 150)
         {
@@ -80,21 +83,20 @@ public class PlayerMovement : MonoBehaviour
                 {
                     //animation spermatozoide
                     animator.SetInteger("Vie", 2);
-                    Debug.Log(compteurVie + "ICCCI ");
                     break;
                 }
             case 2:
                 {
                     //animation coeur
                     animator.SetInteger("Vie", 3);
-                    Debug.Log(compteurVie + "LLLAAA ");
                     break;
                 }
-            /*case 3:
+            case 3:
                 {
                     //animation foetus
+                    animator.SetInteger("Vie", 4);
                     break;
-                }*/
+                }
         }
        
     }
