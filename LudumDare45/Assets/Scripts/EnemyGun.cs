@@ -17,6 +17,9 @@ public class EnemyGun : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// L'ennemis tirera en direction de la position du joueur 
+    /// </summary>
     void FireEnemyBullet()
     {
         GameObject playerShip = GameObject.Find("Player");

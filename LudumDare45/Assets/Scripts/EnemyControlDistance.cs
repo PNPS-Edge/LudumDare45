@@ -5,56 +5,63 @@ using UnityEngine;
 public class EnemyControlDistance : MonoBehaviour
 {
     int health =100;
-    float speed;
     public Transform target;
-    public float attackRadius; //useless
-    public float chaseRadius;
-    private bool shoot;
+    public float timer=2f;
+    private Vector2 movement;
+    private float timeLeft;
+    private float maxSpeed = 5f;
+    Rigidbody2D rb;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+
+        rb = gameObject.GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player").transform;
-        speed = 2f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckDistance();
+        //CheckDistance();
+        
+        timeLeft -= Time.deltaTime;
+        if(timeLeft <=0)
+        {
+            movement = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+            timeLeft += timer;
+        }
         
     }
 
+    void FixedUpdate()
+    {
+        rb.AddForce(movement * maxSpeed);
+    }
+
+
+    //Vie de l'ennemie
     public void SetHealth(int nb)
     {
         health = health - nb;
         if (health <= 0)
         {
-            target.GetComponent<PlayerMovement>().SetScore(20);
+            target.GetComponent<PlayerMovement>().SetScore(25);
             Destroy(gameObject);
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
         {
-            
+            //Retire une vie au joueur
             if (collision.CompareTag("Player"))
             {
-                Destroy(gameObject);
+            collision.GetComponent<PlayerMovement>().SetDamage();
+            Destroy(gameObject);
             }
             
         }
     
-
-    void CheckDistance()
-    {
-        Vector3 axis = new Vector3(0,0, 1);
-        if (Vector2.Distance(target.position, transform.position) <= chaseRadius )
-        {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime - chaseRadius);
-
-        }
-        
-    }
 }
 
