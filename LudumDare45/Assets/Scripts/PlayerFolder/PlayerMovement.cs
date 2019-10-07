@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public int stepScore;
     public PlayerRaceMovementArea PlayerMovementArea;
     public int StepToEvolve = 100;
-        
+
     #endregion Properties
 
     // Start is called before the first frame update
@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         // Management of the evolution of the player
-        if(EvolutionStep == 1)
+        if (EvolutionStep == 1)
         {
             timeEvolve -= Time.deltaTime;
 
@@ -82,18 +82,21 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     public void SetDamage()
     {
-        EvolutionStep = EvolutionStep - 1;
-
-        if (EvolutionStep <= 0)
+        // First animation stage
+        if (EvolutionStep == 1)
         {
             this.enabled = false;
-            LevelArenaController.Instance.ChangeLevel("Race"); 
+            LevelArenaController.Instance.ChangeLevel("Race");
+        }
+        else
+        {
+            EvolutionStep--;
+            ChangeAnimation();
         }
 
-        ChangeAnimation();
     }
 
- 
+
     /// <summary>
     /// Score du joueur permet également d'évoluer
     /// </summary>
@@ -101,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
     public void SetScore(int nb)
     {
         score += nb;
-        
+
         if (score >= stepScore + StepToEvolve && EvolutionStep == 2)
         {
             EvolutionStep++;
@@ -114,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
             stepScore = score;
             ChangeAnimation();
         }
-        if(score >= stepScore + StepToEvolve && EvolutionStep == 4)
+        if (score >= stepScore + StepToEvolve && EvolutionStep == 4)
         {
             LevelArenaController.Instance.ChangeLevel("EndScreen");
         }
@@ -122,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void ChangeAnimation()
     {
-        switch(EvolutionStep)
+        switch (EvolutionStep)
         {
             case 1:
                 {
@@ -149,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
                     break;
                 }
         }
-       
+
     }
 
 }
