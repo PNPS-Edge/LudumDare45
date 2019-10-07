@@ -5,24 +5,36 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    #region Fields
+
+    private Animator animator;
+    Vector2 movement;
+    Vector2 mousePos;
+
+    #endregion Fields
+
+    #region Properties
+
     public Camera cam;
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
-    Vector2 movement;
-    Vector2 mousePos;
-    public int compteurVie;
-    public int score = 0;
-    private Animator animator;
-    private int timeEvolve = 30;
+    public int EvolutionStep;
+    public int timeEvolve = 30;
+    public int score;
+    public int stepScore;
+
+    public int StepToEvolve = 100;
+        
+    #endregion Properties
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        compteurVie = 1;
+        EvolutionStep = 1;
         animator = GetComponent<Animator>();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
@@ -32,20 +44,25 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        // Player's Input
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
+        // Mouse position
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        //Temps avant que le spermaplayer evolue
-        if(compteurVie == 1)
+
+        // Management of the evolution of the player
+
+
+        if(EvolutionStep == 1)
         {
             timeEvolve -= 1;
+
             if (timeEvolve <= 0)
             {
-                compteurVie += 1;
+                EvolutionStep += 1;
                 timeEvolve = 60;
                 ChangeAnimation();
             }
@@ -57,8 +74,9 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     public void SetDamage()
     {
-        compteurVie = compteurVie - 1;
-        if (compteurVie <= 0)
+        EvolutionStep = EvolutionStep - 1;
+
+        if (EvolutionStep <= 0)
         {
             SceneManager.LoadScene("YouLoose");
             
@@ -75,50 +93,50 @@ public class PlayerMovement : MonoBehaviour
     {
         score += nb;
         
-        if (score == 200 )
+        if (score >= stepScore + StepToEvolve && EvolutionStep == 2)
         {
-            compteurVie += 1;
+            EvolutionStep += 1;
+            stepScore = score;
             ChangeAnimation();
         }
-        if (score == 300)
+        if (score >= stepScore + StepToEvolve && EvolutionStep == 3)
         {
-            compteurVie += 1;
+            EvolutionStep += 1;
+            stepScore = score;
             ChangeAnimation();
         }
-        if(score == 500)
+        if(score >= stepScore + StepToEvolve && EvolutionStep == 4)
         {
-            SceneManager.LoadScene("YouWin");
+            SceneManager.LoadScene("EndScreen");
         }
     }
 
     public void ChangeAnimation()
     {
-        switch(compteurVie)
+        switch(EvolutionStep)
         {
             case 1:
                 {
                     //animation spermaplayer
-                    animator.SetInteger("Vie", 1);
+                    animator.SetInteger("EvolutionStep", 1);
                     break;
                 }
             case 2:
                 {
                     //animation ambryon
-                    animator.SetInteger("Vie", 2);
+                    animator.SetInteger("EvolutionStep", 2);
                     break;
                 }
             case 3:
                 {
                     //animation coeur
-                    //animator.enabled = true;
-                    animator.SetInteger("Vie", 3);
+                    animator.SetInteger("EvolutionStep", 3);
                     break;
                 }
             case 4:
                 {
                     //animation foetus
-                    animator.SetInteger("Vie", 4);
-
+                    animator.SetInteger("EvolutionStep", 4);
                     break;
                 }
         }

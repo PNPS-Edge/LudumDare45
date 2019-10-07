@@ -30,7 +30,6 @@ public class FinishLineController : MonoBehaviour
         {
             StartCoroutine(ChangeScene());
         }
-
     }
     public IEnumerator ChangeScene()
     {

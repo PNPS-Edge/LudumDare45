@@ -26,26 +26,30 @@ public class BulletScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        
         GameObject go = gameObject.GetComponent<GameObject>();
-        if (collision.CompareTag("Bullet") )
+
+        if (collision.CompareTag("Bullet"))
         {
             Destroy(gameObject);
         }
-        if (collision.CompareTag("PlayerBullet"))
+
+        if (collision.CompareTag("PlayerBullet") && !CompareTag("PlayerBullet"))
         {
             Destroy(gameObject);
         }
+
         if (collision.CompareTag("EnemyCac"))
         {
             collision.GetComponent<EnemyControlCac>().SetHealth(50);
             Destroy(gameObject);
         }
+
         if (collision.CompareTag("EnemyDistance"))
         {
             collision.GetComponent<EnemyControlDistance>().SetHealth(50);
             Destroy(gameObject);
         }
+
         if (collision.CompareTag("Player") && gameObject.name == "Enemybullets(Clone)")
         {
             collision.GetComponent<PlayerMovement>().SetDamage();

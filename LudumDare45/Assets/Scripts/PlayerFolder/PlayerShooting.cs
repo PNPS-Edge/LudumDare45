@@ -31,7 +31,7 @@ public class PlayerShooting : MonoBehaviour
     /// </summary>
     void Shoot()
     {
-        int playerLife = gameObject.GetComponent<PlayerMovement>().compteurVie;
+        int playerLife = gameObject.GetComponent<PlayerMovement>().EvolutionStep;
         switch(playerLife)
         {
             case 1:
