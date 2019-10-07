@@ -318,7 +318,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.252, g: 0.15698053, b: 0.3584906, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -331,11 +331,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.5
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -673,7 +673,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6a9c46875df94744dab98c62d031667e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 38f271bb0333d33478a11721e90b7257, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -712,7 +712,6 @@ GameObject:
   - component: {fileID: 1023403128}
   - component: {fileID: 1023403127}
   - component: {fileID: 1023403126}
-  - component: {fileID: 1023403132}
   - component: {fileID: 1023403133}
   m_Layer: 0
   m_Name: Player
@@ -772,12 +771,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 338535456}
-  moveSpeed: 5
+  moveSpeed: 0.1
   rb: {fileID: 1023403129}
   EvolutionStep: 0
-  timeEvolve: 30
+  timeEvolve: 300
   score: 0
   stepScore: 0
+  PlayerMovementArea:
+    X:
+      Minimum: -9.22
+      Maximum: 10
+    Y:
+      Minimum: -9.5
+      Maximum: 9.5
   StepToEvolve: 200
 --- !u!50 &1023403129
 Rigidbody2D:
@@ -847,25 +853,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1023403132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1023403125}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9f372ad4f6b82a4eaab1a16a616c162, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoint: {fileID: 2106889949}
-  firePointTwo: {fileID: 1106600356}
-  firePointThree: {fileID: 252478623}
-  firePointFour: {fileID: 2064801382}
-  firePointCell: {fileID: 669070722}
-  bullet: {fileID: 4727839954812433240, guid: 56c7b6fb80b752c46861ac47dee009f5, type: 3}
-  bulletForce: 20
 --- !u!212 &1023403133
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1154,7 +1141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1899213736
 RectTransform:
   m_ObjectHideFlags: 0

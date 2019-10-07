@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public int timeEvolve = 30;
     public int score;
     public int stepScore;
-
+    public PlayerRaceMovementArea PlayerMovementArea;
     public int StepToEvolve = 100;
         
     #endregion Properties
@@ -36,11 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
-        Vector2 lookDir = mousePos - rb.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        rb.rotation = angle;
     }
 
     // Update is called once per frame
@@ -49,6 +45,19 @@ public class PlayerMovement : MonoBehaviour
         // Player's Input
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        // Apply the movement within the player movement area
+        this.rb.position = new Vector2
+        (
+            Mathf.Clamp(this.rb.position.x + (movement.x * this.moveSpeed), this.PlayerMovementArea.X.Minimum, this.PlayerMovementArea.X.Maximum),
+            Mathf.Clamp(this.rb.position.y + (movement.y * this.moveSpeed), this.PlayerMovementArea.Y.Minimum, this.PlayerMovementArea.Y.Maximum)
+        );
+
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+
+        Vector2 lookDir = mousePos - rb.position;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+        rb.rotation = angle;
 
         // Mouse position
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -78,9 +87,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (EvolutionStep <= 0)
         {
-            SceneManager.LoadScene("YouLoose");
-            
+            LevelArenaController.Instance.ChangeLevel("Race"); 
         }
+
         ChangeAnimation();
     }
 
@@ -107,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if(score >= stepScore + StepToEvolve && EvolutionStep == 4)
         {
-            SceneManager.LoadScene("EndScreen");
+            LevelArenaController.Instance.ChangeLevel("EndScreen");
         }
     }
 

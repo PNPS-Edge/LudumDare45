@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelArenaController : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class LevelArenaController : MonoBehaviour
     /// Field for instance of the game controller
     /// </summary>
     private static LevelArenaController instance;
+
+    private bool exitrequired;
 
     #endregion Fields
 
@@ -38,6 +41,8 @@ public class LevelArenaController : MonoBehaviour
     /// </summary>
     public bool IsGameOver = false;
 
+    public Animator animator;
+
     #endregion Properties
 
     #region Methods
@@ -55,8 +60,6 @@ public class LevelArenaController : MonoBehaviour
 
     public void PlayerScored(int score)
     {
-        this.PlayerScore += score;
-        this.CheckEvolution();
     }
 
     #endregion Methods
@@ -93,6 +96,24 @@ public class LevelArenaController : MonoBehaviour
     private void CheckEvolution()
     {
 
+    }
+
+    public void ChangeLevel(string level)
+    {
+        animator.SetTrigger("FadeOut");
+        exitrequired = true;
+
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 2 && !animator.IsInTransition(0) && exitrequired)
+        {
+            StartCoroutine(ChangeScene(level));
+        }
+    }
+
+    private IEnumerator ChangeScene(string level)
+    {
+        yield return new WaitForSeconds(1.8f);
+
+        SceneManager.LoadScene(level);
     }
 
     #endregion Functions

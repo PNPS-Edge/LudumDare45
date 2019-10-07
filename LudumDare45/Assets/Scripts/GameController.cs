@@ -59,11 +59,6 @@ namespace Assets.Scripts
             this.IsGameOver = true;
         }
 
-        public void PlayerScored(int score)
-        {
-
-        }
-
         #endregion Methods
 
         #region Functions

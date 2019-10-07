@@ -22,12 +22,4 @@ public class PlayerRaceMovementArea
     public MinimumMaximum Y;
 
     #endregion Properties
-
-    private void OnTriggerEnter(Collider2D collider)
-    {
-        if (collider.CompareTag("Ennemy"))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-    }
 }
