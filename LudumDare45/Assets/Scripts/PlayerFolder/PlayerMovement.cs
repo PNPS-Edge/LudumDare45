@@ -46,15 +46,14 @@ public class PlayerMovement : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
         movement.x = Input.GetAxisRaw("Horizontal");
 
-        // Player's Input within the player movement area
-        movement.y = Mathf.Clamp(movement.y, this.PlayerMovementArea.X.Minimum, this.PlayerMovementArea.X.Maximum);
-        movement.x = Mathf.Clamp(movement.x, this.PlayerMovementArea.X.Minimum, this.PlayerMovementArea.X.Maximum);
-
         // Apply the movement 
         Vector2 tmp = this.transform.position;
-        tmp += (movement * Time.deltaTime * moveSpeed);    
-        this.transform.position = tmp;
+        tmp += (movement * Time.deltaTime * moveSpeed);
 
+        tmp.y = Mathf.Clamp(tmp.y, this.PlayerMovementArea.X.Minimum, this.PlayerMovementArea.X.Maximum);
+        tmp.x = Mathf.Clamp(tmp.x, this.PlayerMovementArea.X.Minimum, this.PlayerMovementArea.X.Maximum);
+
+        this.transform.position = tmp;
 
         // Mouse position
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
