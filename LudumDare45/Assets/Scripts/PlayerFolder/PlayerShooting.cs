@@ -18,6 +18,9 @@ public class PlayerShooting : MonoBehaviour
     public GameObject bullet;
     public float bulletForce = 5f;
 
+    //Sound effect
+    public AudioSource AudioSource;
+
     // Update is called once per frame
     void Update()
     {
@@ -42,15 +45,18 @@ public class PlayerShooting : MonoBehaviour
             case 2: //Player embryon
                 {
                     ShooterCell();
+                    AudioSource.Play();
                     break;
                 }
             case 3: //Player Heart
                 {
                     ShooterTwo();
+                    AudioSource.Play();
                     break;
                 }
             case 4: //Player foetus
                 {
+                    AudioSource.Play();
                     ShooterTwo();
                     ShooterThree();
                     ShooterFour();
