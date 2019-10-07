@@ -95,8 +95,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd67ba5f5c15e22478653a98cfd0809c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 150
+  speed: 0
   target: {fileID: 0}
   chaseRadius: 8
+  Explosion: {fileID: 1500378020736912, guid: 2547a66872ebe45408ace228820a79e1, type: 3}
 --- !u!61 &-1122735244967719492
 BoxCollider2D:
   m_ObjectHideFlags: 0
