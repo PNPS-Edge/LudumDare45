@@ -59,6 +59,9 @@ public class PlayerRaceController : MonoBehaviour
     {
         if (col.CompareTag("Enemy"))
         {
+            //freeze the player
+            this.enabled = false;
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
