@@ -36,6 +36,10 @@ public class LevelArenaController : MonoBehaviour
 
     public int PlayerScore;
 
+    public AudioSource AudioSource;
+
+    public AudioClip AudioClip;
+
     /// <summary>
     /// Gets or sets the value indicating wheter the game is over
     /// </summary>
@@ -111,7 +115,23 @@ public class LevelArenaController : MonoBehaviour
 
     private IEnumerator ChangeScene(string level)
     {
-        yield return new WaitForSeconds(1.8f);
+        while (AudioSource.volume > 0.0)
+        {
+            yield return new WaitForSeconds(0.3f);
+            AudioSource.volume -= 0.1f;
+        }
+
+        AudioSource.clip = null;
+        AudioSource.volume = 0.3f;
+
+       yield return new WaitForSeconds(0.1f);
+
+        if (level == "Race")
+        {
+            AudioSource.PlayOneShot(AudioClip);
+        }
+
+        yield return new WaitForSeconds(1.5f);
 
         SceneManager.LoadScene(level);
     }
