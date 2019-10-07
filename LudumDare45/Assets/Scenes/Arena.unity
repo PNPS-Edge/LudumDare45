@@ -1123,6 +1123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerScore: 0
   IsGameOver: 0
+  animator: {fileID: 1899213737}
 --- !u!1 &1899213735
 GameObject:
   m_ObjectHideFlags: 0
