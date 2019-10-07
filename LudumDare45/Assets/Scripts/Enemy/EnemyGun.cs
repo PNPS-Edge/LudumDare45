@@ -5,6 +5,10 @@ using UnityEngine;
 public class EnemyGun : MonoBehaviour
 {
     public GameObject EnemyBullet;
+
+    //Sound effect
+    public AudioSource AudioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,5 +39,6 @@ public class EnemyGun : MonoBehaviour
 
             bullet.GetComponent<EnemyBullets>().setDirection(direction);
         }
+        AudioSource.Play();
     }
 }
