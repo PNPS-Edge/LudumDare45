@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 762c63f3343591c4cbb480599a67ca5f
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Metal Slug Latino
+  fontNames:
+  - Metal Slug Latino
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 434883da6ab1d7a4881bda532cdb9f1d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
