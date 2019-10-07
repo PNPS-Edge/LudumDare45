@@ -87,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (EvolutionStep <= 0)
         {
+            this.enabled = false;
             LevelArenaController.Instance.ChangeLevel("Race"); 
         }
 
@@ -104,13 +105,13 @@ public class PlayerMovement : MonoBehaviour
         
         if (score >= stepScore + StepToEvolve && EvolutionStep == 2)
         {
-            EvolutionStep += 1;
+            EvolutionStep++;
             stepScore = score;
             ChangeAnimation();
         }
         if (score >= stepScore + StepToEvolve && EvolutionStep == 3)
         {
-            EvolutionStep += 1;
+            EvolutionStep++;
             stepScore = score;
             ChangeAnimation();
         }
