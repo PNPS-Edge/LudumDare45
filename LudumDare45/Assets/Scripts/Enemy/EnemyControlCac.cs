@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class EnemyControlCac : MonoBehaviour
 {
-    int health = 150;
-    float speed;
+    #region Properties
+
+    public int health = 150;
+    public float speed;
     public Transform target;
     public float chaseRadius;
+
+    /// <summary>
+    /// Gets orr sets the death animation
+    /// </summary>
+    public GameObject Explosion;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -24,17 +32,19 @@ public class EnemyControlCac : MonoBehaviour
 
     public void SetHealth(int nb)
     {
-            health = health - nb;
-            if (health <= 0)
-            {
+        health = health - nb;
+        if (health <= 0)
+        {
             target.GetComponent<PlayerMovement>().SetScore(25);
+            GameObject expl = GameObject.Instantiate(Explosion, this.transform.position, Quaternion.identity);
+            Destroy(expl, 1);
             Destroy(gameObject);
-            }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player") )
+        if (collision.CompareTag("Player"))
         {
             collision.GetComponent<PlayerMovement>().SetDamage();
             Destroy(gameObject);
@@ -48,6 +58,6 @@ public class EnemyControlCac : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
-        
+
     }
 }
