@@ -150,7 +150,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2073473399}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &15724470
 MonoBehaviour:
@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 909355994}
+  Exit: {fileID: 1344615740}
 --- !u!61 &15724471
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -769,6 +770,11 @@ PrefabInstance:
         type: 3}
       propertyPath: PossibleMovement.Y.Minimum
       value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9197819007830408185, guid: 4bea445882a396e4290a843ad3f804ac,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bea445882a396e4290a843ad3f804ac, type: 3}
@@ -1533,6 +1539,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 753793028}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1344615740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1344615741}
+  m_Layer: 0
+  m_Name: FinishDirection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1344615741
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344615740}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 14, y: 97.9, z: 21.359375}
+  m_LocalScale: {x: 0.8629633, y: 1.648915, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2073473399}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1401010524 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 409806785781487672, guid: d28de9d3b27404b419e6e056444012d9,
@@ -2450,6 +2486,7 @@ Transform:
   m_Children:
   - {fileID: 2013741646}
   - {fileID: 935069881}
+  - {fileID: 1344615741}
   - {fileID: 15724469}
   m_Father: {fileID: 0}
   m_RootOrder: 1
