@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    //public GameObject hitEffect;
-    /*private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-        //Destroy(effect, 5f); //remove the effect particule or sprite after 5sec
-        Destroy(gameObject);
-    }*/
 
     private void Update()
     {
