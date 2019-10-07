@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public int EvolutionStep;
-    public int timeEvolve = 30;
+    public float timeEvolve;
     public int score;
     public int stepScore;
     public PlayerRaceMovementArea PlayerMovementArea;
@@ -42,37 +42,37 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        // Player's Input
-        movement.x = Input.GetAxisRaw("Horizontal");
+        // Player's Input within the player movement area
         movement.y = Input.GetAxisRaw("Vertical");
+        movement.x = Input.GetAxisRaw("Horizontal");
 
-        // Apply the movement within the player movement area
-        this.rb.position = new Vector2
-        (
-            Mathf.Clamp(this.rb.position.x + (movement.x * this.moveSpeed), this.PlayerMovementArea.X.Minimum, this.PlayerMovementArea.X.Maximum),
-            Mathf.Clamp(this.rb.position.y + (movement.y * this.moveSpeed), this.PlayerMovementArea.Y.Minimum, this.PlayerMovementArea.Y.Maximum)
-        );
+        // Player's Input within the player movement area
+        movement.y = Mathf.Clamp(movement.y, this.PlayerMovementArea.X.Minimum, this.PlayerMovementArea.X.Maximum);
+        movement.x = Mathf.Clamp(movement.x, this.PlayerMovementArea.X.Minimum, this.PlayerMovementArea.X.Maximum);
 
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        // Apply the movement 
+        Vector2 tmp = this.transform.position;
+        tmp += (movement * Time.deltaTime * moveSpeed);    
+        this.transform.position = tmp;
 
-        Vector2 lookDir = mousePos - rb.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        rb.rotation = angle;
 
         // Mouse position
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
+        Vector2 lookDir = mousePos - (Vector2)this.transform.position;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+        this.rb.rotation = angle;
+
+
         // Management of the evolution of the player
-
-
         if(EvolutionStep == 1)
         {
-            timeEvolve -= 1;
+            timeEvolve -= Time.deltaTime;
 
             if (timeEvolve <= 0)
             {
-                EvolutionStep += 1;
-                timeEvolve = 60;
+                EvolutionStep++;
+                timeEvolve = 7;
                 ChangeAnimation();
             }
         }
