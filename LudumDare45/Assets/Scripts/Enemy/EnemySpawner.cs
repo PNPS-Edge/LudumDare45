@@ -28,6 +28,7 @@ public class EnemySpawner : MonoBehaviour
         Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
         
+        //Quel ennemi va être invoquer : 
         int whoEnnemy = Random.Range(0, 2);
         GameObject anEnemy;
         if (whoEnnemy == 1)

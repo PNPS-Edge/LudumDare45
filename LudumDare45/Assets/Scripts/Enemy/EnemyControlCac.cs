@@ -7,7 +7,6 @@ public class EnemyControlCac : MonoBehaviour
     int health = 150;
     float speed;
     public Transform target;
-    public float attackRadius;
     public float chaseRadius;
 
     // Start is called before the first frame update
@@ -28,9 +27,8 @@ public class EnemyControlCac : MonoBehaviour
             health = health - nb;
             if (health <= 0)
             {
-            
-            target.GetComponent<PlayerMovement>().SetScore(20);
-                Destroy(gameObject);
+            target.GetComponent<PlayerMovement>().SetScore(25);
+            Destroy(gameObject);
             }
     }
 
@@ -38,13 +36,14 @@ public class EnemyControlCac : MonoBehaviour
     {
         if(collision.CompareTag("Player") )
         {
+            collision.GetComponent<PlayerMovement>().SetDamage();
             Destroy(gameObject);
         }
     }
 
     void CheckDistance()
     {
-        
+        //Enemy will chase the player
         if (Vector2.Distance(target.position, transform.position) <= chaseRadius)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);

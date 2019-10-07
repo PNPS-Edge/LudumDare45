@@ -10,20 +10,14 @@ public class EnemyBullets : MonoBehaviour
 
     void Awake()
     {
-        speed = 5f;
+        speed = 3f;
         isReady = false;
   
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    
     public void setDirection(Vector2 direction)
     {
         bulletDirection = direction.normalized;
-
         isReady = true;
     }
 
@@ -35,12 +29,13 @@ public class EnemyBullets : MonoBehaviour
             Vector2 position = transform.position;
 
             position += bulletDirection * speed * Time.deltaTime;
-
             transform.position = position;
 
+            //get the position of camera
             Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
             Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
 
+            //Si hors cadre de la camera, destruction du tir
             if ((transform.position.x < min.x) || (transform.position.x > max.x) ||
                 (transform.position.y < min.y) || (transform.position.y > max.y))
             {

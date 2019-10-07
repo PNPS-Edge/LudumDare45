@@ -12,9 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Race.unity
     guid: 3f92121725c9f14479070a90479c81f5
   - enabled: 1
-    path: Assets/Scenes/Arena.unity
-    guid: 1ed8635e22c9ce340961a0fa377753fe
+    path: Assets/Scenes/YouLoose.unity
+    guid: 47c42a180ea0c804eb7ab1791623a0e8
   - enabled: 1
-    path: Assets/Scenes/EndScreen.unity
+    path: Assets/Scenes/YouWin.unity
     guid: fe5b959028d17dc4cbd4ca094d675c68
   m_configObjects: {}
