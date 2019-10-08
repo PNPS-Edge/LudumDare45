@@ -1,22 +1,36 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Class for end screen controller
+/// </summary>
 public class EndScreenController : MonoBehaviour
 {
+    #region Fields
+
+    /// <summary>
+    /// Field for if trasition is required
+    /// </summary>
     private bool exitrequired;
 
+    #endregion Fields
+
+    #region Properties
+
+    /// <summary>
+    /// Gets or sets the animator
+    /// </summary>
     public Animator animator;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    #endregion Properties
 
-    // Update is called once per frame
-    void Update()
+    #region Functions
+
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
+    private void Update()
     {
         if (Input.GetButton("Fire1"))
         {
@@ -24,7 +38,10 @@ public class EndScreenController : MonoBehaviour
         }
     }
 
-    public void FadeOut()
+    /// <summary>
+    /// Starts the fade out and the scene transition
+    /// </summary>
+    private void FadeOut()
     {
         animator.SetTrigger("FadeOut");
         exitrequired = true;
@@ -35,10 +52,16 @@ public class EndScreenController : MonoBehaviour
         }
     }
 
-    public IEnumerator ChangeScene()
+    /// <summary>
+    /// Return to Main menu
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator ChangeScene()
     {
         yield return new WaitForSeconds(1.8f);
 
         SceneManager.LoadScene(0);
     }
+
+    #endregion Functions
 }

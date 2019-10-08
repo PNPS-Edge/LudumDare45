@@ -6,20 +6,23 @@ using UnityEngine.UI;
 
 public class TitleMenuController : MonoBehaviour
 {
+    #region Fields
+
+    private bool exitrequired;
+
+    #endregion Fields
+
+    #region Properties
+
     public AudioSource audioSource;
 
     public AudioClip audioClip;
 
     public Animator animator;
 
-    private bool exitrequired;
+    #endregion Properties
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    #region Methods
 
     // Update is called once per frame
     void Update()
@@ -44,4 +47,6 @@ public class TitleMenuController : MonoBehaviour
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    #endregion Methods
 }

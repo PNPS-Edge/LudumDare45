@@ -23,6 +23,7 @@ public class FinishLineController : MonoBehaviour
     private GameObject player;
     #endregion
 
+    #region Methods
 
     // Start is called before the first frame update
     void Start()
@@ -69,4 +70,6 @@ public class FinishLineController : MonoBehaviour
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    #endregion Methods
 }
