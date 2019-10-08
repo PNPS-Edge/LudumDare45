@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 /// Class for the movement area parameters
 /// </summary>
 [System.Serializable]
-public class PlayerRaceMovementArea
+public class PlayerMovementArea
 {
     #region Properties
 

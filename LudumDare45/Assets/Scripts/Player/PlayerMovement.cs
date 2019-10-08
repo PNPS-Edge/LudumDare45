@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public float timeEvolve;
     public int score;
     public int stepScore;
-    public PlayerRaceMovementArea PlayerMovementArea;
+    public PlayerMovementArea PlayerMovementArea;
     public int StepToEvolve = 100;
 
     #endregion Properties

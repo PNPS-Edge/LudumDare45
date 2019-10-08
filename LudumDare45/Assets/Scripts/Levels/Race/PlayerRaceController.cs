@@ -1,8 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Class for Player controller in race level
+/// </summary>
 public class PlayerRaceController : MonoBehaviour
 {
     #region Fields
@@ -16,9 +17,15 @@ public class PlayerRaceController : MonoBehaviour
 
     #region Properties
 
+    /// <summary>
+    /// Gets or sets the speed of the player
+    /// </summary>
     public float Speed;
 
-    public PlayerRaceMovementArea PossibleMovement;
+    /// <summary>
+    /// Gets or sets the possible movement area of the player
+    /// </summary>
+    public PlayerMovementArea PossibleMovement;
 
     #endregion Properties
 

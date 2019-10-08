@@ -39,25 +39,9 @@ namespace Assets.Scripts
             }
         }
 
-        /// <summary>
-        /// Gets or sets the value indicating wheter the game is over
-        /// </summary>
-        public bool IsGameOver = false;
-
         #endregion Properties
 
         #region Methods
-
-        public void GameStart()
-        {
-            this.IsGameOver = false;
-        }
-
-
-        public void GameIsOver()
-        {
-            this.IsGameOver = true;
-        }
 
         #endregion Methods
 
@@ -81,11 +65,6 @@ namespace Assets.Scripts
             DontDestroyOnLoad(this.gameObject);
 
             #endregion Persistence
-        }
-
-        private void Update()
-        {
-
         }
 
         #endregion Unity
